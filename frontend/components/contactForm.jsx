@@ -49,7 +49,7 @@ export default function ContactForm({ setContacts, contacts }) {
       <input
         type="email"
         placeholder="Email"
-        className="bg-[#eff4ff] p-3 rounded w-full text-[#0c002b] outline-0"
+        className="bg-[#eff4ff] p-3 rounded w-full text-[#0c002b] outline-0" 
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
