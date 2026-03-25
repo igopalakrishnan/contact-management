@@ -11,7 +11,7 @@ export default function ContactList({ setContacts, contacts }) {
       setLoading(true);
       const query = `?status=${filter}&search=${search}`;
       const fetchPromise = await axios
-        .get(`${process.env.VITE_BACKEND_URL}/contacts${query}`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}/contacts${query}`)
         .then((res) => setContacts(res.data))
         .catch((err) => console.log(err));
       const delay = new Promise((resolve) => setTimeout(resolve, 1000));
@@ -23,7 +23,7 @@ export default function ContactList({ setContacts, contacts }) {
 
   const handleStatusChange = async (id, status) => {
     try {
-      await axios.put(`${process.env.VITE_BACKEND_URL}/contacts/${id}`, { status });
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/contacts/${id}`, { status });
       setContacts((prev) =>
         prev.map((c) => (c._id === id ? { ...c, status } : c)),
       );
@@ -35,7 +35,7 @@ export default function ContactList({ setContacts, contacts }) {
   const handleDelete = async (id) => {
     if (confirm("are you sure you want to delete?")) {
       try {
-        await axios.delete(`${process.env.VITE_BACKEND_URL}/contacts/${id}`);
+        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/contacts/${id}`);
         setContacts((prev) => prev.filter((c) => c._id !== id));
       } catch (err) {
         console.log(err);

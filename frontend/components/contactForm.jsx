@@ -12,7 +12,7 @@ export default function ContactForm({ setContacts, contacts }) {
     e.preventDefault();
     if (!name || !email) return alert("Name and Email are required");
     try {
-      const res = await axios.post(`${process.env.VITE_BACKEND_URL}/contacts`, {
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/contacts`, {
         name,
         company,
         email,
